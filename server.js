@@ -31,7 +31,7 @@ const app = express();
 
 
 //middleware
-app.use(cors({origin:"http://localhost:5173/"}))
+app.use(cors({origin:"http://localhost:5173"}))
 app.use(cookieParser())
 app.use(express.json())
 app.use(morgan('dev'))
