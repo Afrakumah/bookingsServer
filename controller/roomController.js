@@ -73,13 +73,13 @@ export const getoneroom = async (req, res, next) => {
   }
 };
 
-export const getRooms = (req, res, next) => {
+export const getRooms = async (req, res, next) => {
   try {
-    const rooms = Room.find();
+    const rooms = await Room.find();
     if (rooms) {
       res.status(200).json(rooms);
     }
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 };

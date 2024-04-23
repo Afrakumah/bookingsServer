@@ -8,11 +8,16 @@ import hotelsRoute from './routes/hotelsRoute.js'
 import roomsRoute from './routes/roomsRoute.js'
 import cookieParser from "cookie-parser";
 import cors from "cors"
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express"
+import { swaggerOptions } from "./helpers/swagger.config.js";
+
 
 dotenv.config()
 
 const PORT = process.env.PORT || 3500
 
+const app = express();
 // const connectDB = async () => {
 
 //     try {
@@ -27,14 +32,21 @@ const PORT = process.env.PORT || 3500
 //     console.log('mongodb disconnected')
 // })
 
-const app = express();
 
 
 //middleware
-app.use(cors({origin:"http://localhost:5173"}))
+
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions)
+
+app.use(cors({
+    // credentials: true,
+    origin:"http://localhost:5173"}))
 app.use(cookieParser())
 app.use(express.json())
 app.use(morgan('dev'))
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.use('/api/auth', authRoute)
 app.use('/api/users', usersRoute)
