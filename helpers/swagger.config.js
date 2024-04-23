@@ -435,6 +435,62 @@ export const swaggerOptions = {
         },
       },
 
+      "/hotels/countbycity?cities=takoradi,kumasi,accra": {
+        get: {
+          tags: ["Hotels"],
+          summary: "Get number of hotel by city in each city ",
+          description: "Get hotels by city",
+
+          responses: {
+            200: {
+              description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  401: {
+                    description: "Unauthorized access",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+
+      "/hotels/countbytype": {
+        get: {
+          tags: ["Hotels"],
+          summary: "Get number of hotel by type in each city ",
+          description: "Get hotels by type",
+
+          responses: {
+            200: {
+              description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  401: {
+                    description: "Unauthorized access",
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+
       "/hotels/deletehotel/find/{id}": {
         delete: {
           tags: ["Hotels"],
