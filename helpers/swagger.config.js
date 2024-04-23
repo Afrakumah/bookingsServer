@@ -118,6 +118,7 @@ export const swaggerOptions = {
         },
       },
 
+
       "/users/getusers": {
         get: {
           summary: "details of users in the database",
@@ -143,6 +144,141 @@ export const swaggerOptions = {
           },
         },
       },
+
+      "/users/getoneuser/{id}": {
+        get: {
+          tags: ["Users"],
+          summary: "Get one user by id",
+          description: "Get users info",
+          operationId: "getUser",
+          parameters: [
+            {
+              name: "id",
+              in: "path",
+              description: "The usersId to get the info",
+              required: true,
+              schema: {
+                type: "string",
+                format: "ObjectId",
+              },
+            },
+          ],
+
+          responses: {
+            200: {
+            //   description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  //   '401': {
+                  //     'description': 'Unauthorized access'
+                  //   }
+                },
+              },
+            },
+          },
+        },
+      },
+
+      "/users/updateuser/{id}": {
+        put: {
+          tags: ["Users"],
+          summary: "Update user detail by id",
+          description: "Update user info",
+          requestBody: {
+            description: "Provide details for updating user info",
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/User",
+                },
+              },
+            },
+          },
+          operationId: "updateUser",
+          parameters: [
+            {
+              name: "id",
+              in: "path",
+              description: "The usersId to update the info",
+              required: true,
+              schema: {
+                type: "string",
+                format: "ObjectId",
+              },
+              
+            },
+          ],
+
+          responses: {
+            200: {
+            //   description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  //   '401': {
+                  //     'description': 'Unauthorized access'
+                  //   }
+                },
+              },
+            },
+          },
+        },
+      },
+
+      "/users/deleteuser/{id}": {
+        delete: {
+          tags: ["Users"],
+          summary: "Delete a user by id",
+          description: "Delete a user",
+          operationId: "deleteUser",
+          parameters: [
+            {
+              name: "id",
+              in: "path",
+              description: "The userId to delete a user.",
+              required: true,
+              schema: {
+                type: "string",
+                format: "ObjectId",
+              },
+            },
+          ],
+
+          responses: {
+            200: {
+            //   description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  //   '401': {
+                  //     'description': 'Unauthorized access'
+                  //   }
+                },
+              },
+            },
+          },
+        },
+      },
+
 
       "/hotels/posthotel": {
         post: {
@@ -178,6 +314,58 @@ export const swaggerOptions = {
         },
       },
 
+      "/hotels/updatehotel/{id}": {
+        put: {
+          tags: ["Hotels"],
+          summary: "Update hotel detail by id",
+          description: "Update hotel info",
+          requestBody: {
+            description: "Provide details for updating hotel info",
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/Hotel",
+                },
+              },
+            },
+          },
+          operationId: "updateHotel",
+          parameters: [
+            {
+              name: "id",
+              in: "path",
+              description: "The hotelId to update the info",
+              required: true,
+              schema: {
+                type: "string",
+                format: "ObjectId",
+              },
+              
+            },
+          ],
+
+          responses: {
+            200: {
+            //   description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  //   '401': {
+                  //     'description': 'Unauthorized access'
+                  //   }
+                },
+              },
+            },
+          },
+        },
+      },
+
       "/hotels/allhotels": {
         get: {
           tags: ["Hotels"],
@@ -199,6 +387,47 @@ export const swaggerOptions = {
                   401: {
                     description: "Unauthorized access",
                   },
+                },
+              },
+            },
+          },
+        },
+      },
+
+      "/hotels/gethotel/find/{id}": {
+        get: {
+          tags: ["Hotels"],
+          summary: "Get one hotel by id",
+          description: "Get hotel info",
+          operationId: "getOnehotel",
+          parameters: [
+            {
+              name: "id",
+              in: "path",
+              description: "The hotelsId to get the info",
+              required: true,
+              schema: {
+                type: "string",
+                format: "ObjectId",
+              },
+            },
+          ],
+
+          responses: {
+            200: {
+            //   description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  //   '401': {
+                  //     'description': 'Unauthorized access'
+                  //   }
                 },
               },
             },
@@ -246,6 +475,7 @@ export const swaggerOptions = {
           },
         },
       },
+
 
       "/rooms/postroom/{hotelid}": {
         post: {
@@ -319,6 +549,99 @@ export const swaggerOptions = {
                   401: {
                     description: "Unauthorized access",
                   },
+                },
+              },
+            },
+          },
+        },
+      },
+
+      "/rooms/getoneroom/{id}": {
+        get: {
+          tags: ["Rooms"],
+          summary: "Get one room by id",
+          description: "Get room info",
+          operationId: "getOneroom",
+          parameters: [
+            {
+              name: "id",
+              in: "path",
+              description: "The roomId to get the info",
+              required: true,
+              schema: {
+                type: "string",
+                format: "ObjectId",
+              },
+            },
+          ],
+
+          responses: {
+            200: {
+            //   description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  //   '401': {
+                  //     'description': 'Unauthorized access'
+                  //   }
+                },
+              },
+            },
+          },
+        },
+      },
+
+      "/rooms/updateroom/{id}": {
+        put: {
+          tags: ["Rooms"],
+          summary: "Update room detail by id",
+          description: "Update room info",
+          requestBody: {
+            description: "Provide details for updating room info",
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/Room",
+                },
+              },
+            },
+          },
+          operationId: "updateRoom",
+          parameters: [
+            {
+              name: "id",
+              in: "path",
+              description: "The roomId to update the info",
+              required: true,
+              schema: {
+                type: "string",
+                format: "ObjectId",
+              },
+              
+            },
+          ],
+
+          responses: {
+            200: {
+            //   description: "Operation successful",
+              content: {
+                "application/json": {
+                  schema: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                    },
+                  },
+
+                  //   '401': {
+                  //     'description': 'Unauthorized access'
+                  //   }
                 },
               },
             },
