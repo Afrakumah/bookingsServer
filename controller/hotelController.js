@@ -1,6 +1,6 @@
-import express from "express";
+
 import hotelModel from "../models/hotelModel.js";
-import { createError } from "../utils/error.js";
+
 
 //posting a hotel
 const postHotel = async (req, res, next) => {

@@ -40,7 +40,7 @@ const app = express();
 const swaggerSpec = swaggerJSDoc(swaggerOptions)
 
 app.use(cors({
-    // credentials: true,
+     credentials: true,
     origin:"http://localhost:5173"}))
 app.use(cookieParser())
 app.use(express.json())
